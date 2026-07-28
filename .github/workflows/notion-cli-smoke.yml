@@ -1,0 +1,25 @@
+name: notion-cli smoke
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: "1.25.6"
+          cache: false
+          token: ""
+
+      - name: Install and run notion-cli
+        shell: bash
+        run: |
+          set -euo pipefail
+          go install github.com/lox/notion-cli@v0.6.0
+          "$(go env GOPATH)/bin/notion-cli" --version

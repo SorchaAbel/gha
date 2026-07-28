@@ -1,0 +1,8 @@
+steps:
+  - label: ":github: notion-cli smoke"
+    key: "notion-cli-smoke"
+    agents:
+      queue: "hosted"
+    plugins:
+      - github-actions#aca805f6eb2965201d4edaa57f3eec8ef9ea7ccb:
+          workflow: .github/workflows/notion-cli-smoke.yml
